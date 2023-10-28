@@ -27,6 +27,14 @@ window.addEventListener('load', function() {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+   
+    let input = document.getElementById("inputEmail");
+    if (email) {
+      input.value = email;
+    }
+  });
+  
 //FIN ENTREGA 7 PARTE 1
 
 
