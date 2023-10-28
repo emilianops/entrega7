@@ -1,3 +1,32 @@
+function isLoggedIn() {
+    let dato = localStorage.getItem("email");
+    if (dato){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+// entrea 4, parte 2: función para cerrar sesión
+function cerrarSesion() {
+    localStorage.removeItem("email");
+    window.location.href = 'login.html'; //redirige al inicio
+}
+
+// entrega 4, parte 2: evento click cerrar sesión
+document.getElementById("cerrarSesion").addEventListener("click", function() {
+    cerrarSesion();
+} );
+
+
+window.addEventListener('load', function() {
+    if (!isLoggedIn()) {
+        window.location.href = 'login.html';
+    }
+});
+
+
+
 const btnTema = document.getElementById('btnTema');
 const body = document.body;
 
