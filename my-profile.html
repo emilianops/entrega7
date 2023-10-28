@@ -8,6 +8,9 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -45,40 +48,92 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item" dropdown> <!--crea desplegable-->
-            <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <!--atributos para que funcione el desplegable-->
+            <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-bs-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"> <!--atributos para que funcione el desplegable-->
               <span id="usuario"></span> <!--muestra el nombre de usuario-->
             </a>
             <div class="dropdown-menu" aria-labelledby="usuarioDropdown"> <!--para las opciones del desplegable-->
               <button class="dropdown-item" id="btnTema">Modo día/Modo noche</button>
-              <a class="dropdown-item" href="cart.html">Mi Carrito</a> <!--redirige a mi carrito--> 
+              <a class="dropdown-item" href="cart.html">Mi Carrito</a> <!--redirige a mi carrito-->
               <a class="dropdown-item" href="my-profile.html">Mi Perfil</a> <!--redirige a mi perfil-->
               <div class="dropdown-divider"></div> <!--separa visualmente las opciones-->
               <a class="dropdown-item" href="login.html" id="cerrarSesion">Cerrar Sesión</a>
             </div>
-          
-            
-            
+
+
           </li>
         </ul>
       </div>
     </div>
-    
+
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+      <div class="mt-4">
+        <h3>Perfil</h3>
       </div>
+
+      <hr class="mt-5">
+      <form class>
+        <div class="row">
+          <div class="col">
+            <label for="" class="text-secondary form-label mb-0">Primer nombre*</label>
+            <input type="text" class="form-control" id="#" placeholder="ej: Gabriela" required>
+          </div>
+          <div class="col">
+            <label for="" class="text-secondary form-label mb-0">Segundo nombre</label>
+            <input type="text" class="form-control" id="#" placeholder="ej: Fernanda">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <label for="" class="text-secondary form-label mb-0">Primer apellido*</label>
+            <input type="text" class="form-control" id="#" placeholder="ej: Diaz" required>
+          </div>
+          <div class="col">
+            <label for="" class="text-secondary form-label mb-0">Segundo apellido</label>
+            <input type="text" class="form-control" id="#" placeholder="ej: Fagundez">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <label for="" class="text-secondary form-label mb-0">E-mail</label>
+            <input type="text" class="form-control" id="inputEmail" placeholder="ejemplo@mail.com">
+          </div>
+          <div class="col">
+            <label for="" class="text-secondary form-label mb-0">Imágen de perfil</label>
+            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
+              aria-label="Upload">
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <label for="" class="text-secondary form-label">Teléfono de contacto*</label>
+            <input type="text" class="form-control" id="inputEmail" placeholder="090000000" required>
+          </div>
+          <div class="col">
+            <label for="" class="text-secondary form-label"> </label>
+          </div>
+        </div>
+        <hr class="mt-5">
+        <button type="button" class="btn btn-primary">Guardar cambios</button>
+      </form>
     </div>
   </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
