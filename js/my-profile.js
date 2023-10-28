@@ -42,15 +42,77 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //INICIO ENTREGA 7 PARTE 2
 
+//espera a que cargue la pág.
+document.addEventListener("DOMContentLoaded", function () {
+
+    // obtiene elemento de entrada del form por el id y lo almacena
+    const campoPrimerNombre = document.getElementById("primerNombre");
+    const campoSegundoNombre = document.getElementById("segundonombre");
+    const campoPrimerApellido= docuement.getElementById("primerapellido");
+    const campoSegundoApellido = document.getElementById("segundoApellido");
+    const campoInputEmail = document.getElementById("inputEmail");
+    const campoInputTelf = document.getElementById("inputTelf");
+
+    // idem anterior: obtiene boton guardar cambios
+    const botonGuardarCambios = document.getElementById("guardarCambios");
+
+    // agrega evento al boton xa q se ejecute la función al dar click
+    botonGuardarCambios.addEventListener("click", function () {
+
+    // obtiene datos ingresados en campos por usuario y los almacena
+    const primerNombre = campoPrimerNombre.value;
+    const segundoNombre = campoSegundoNombre.value;
+    const primerApellido = campoPrimerApellido.value;
+    const segundoApellido = campoSegundoApellido.value;
+    const email = campoInputEmail.value; 
+    const telefono = campoInputTelf.value;
+
+    // valida campos obligatorios
+    if (!primerNombre || !primerApellido || !email) {
+        alert("Completar campos obligatorios*");
+        return;
+    }
+
+    // guardar datos en el localstorage
+    const datos= {
+        primerNombre,
+        segundoNombre,
+        primerApellido,
+        segundoApellido,
+        email,
+        telefono,
+        
+    };
+
+    //antes de almacernar, los convertimos a cadena JSON
+    localStorage.setItem("datosUsuario", JSON.stringify(datos));
+
+    alert("Datos guardados");
+
+
+
+    });
 
 //FIN ENTREGA 7 PARTE 2
 
 
-
-
-
-
 //INICIO ENTREGA 7 PARTE 3
+
+// si hay datos guardados, los muestra
+const datosGuardados = localStorage.getItem("datosUsuario");
+if (datosGuardados) {
+    const datos = JSON.parse (datosGuardados); //si hay datos, se parsean desde JSON a JS
+    campoPrimerNombre.value = datos.primerNombre;
+    campoSegundoNombre.value = datos.segundoNombre;
+    campoPrimerApellido.value = datos.primerApellido;
+    campoSegundoApellido.value = datos.segundoApellido;
+    campoInputEmail.value = datos.inputEmail;
+    campoInputTelf.value = datos.inputTelf;
+}
+
+
+});
+
 
 
 //FIN ENTREGA 7 PARTE 3
