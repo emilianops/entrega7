@@ -59,14 +59,14 @@ document.getElementById("btnGuardarCambios").addEventListener("click", function 
 
     //SI ESTÁN AL MENOS LOS OBLIGATORIOS SE GUARDA EN UN OBJETO Y SE CARGA EN UN LOCALSTORAGE
     if (todosCamposCompletos) {
-      let perfilData = {
+      let datosPerfil = {
         nombre: document.getElementById("nombre").value,
         apellido: document.getElementById("apellido").value,
         telefono: document.getElementById("telefono").value,
         segnombre: document.getElementById("segnombre").value,
         segapellido: document.getElementById("segapellido").value,
       };
-      localStorage.setItem("perfilData", JSON.stringify(perfilData));
+      localStorage.setItem("datosPerfil", JSON.stringify(datosPerfil));
   
       //   ALERTA EXITO BOOTSTRAP
       let successMessage = document.getElementById("success-message");
@@ -85,17 +85,15 @@ document.getElementById("btnGuardarCambios").addEventListener("click", function 
 
 //AL CARGAR LA PÁGINA, SI TIENE PERFIL GUARDADO,  SE CARGAN LOS VALORES DEL LOCALSTORAGE A LOS INPUTS
 document.addEventListener("DOMContentLoaded", function () {
-    let storedPerfilData = localStorage.getItem("perfilData");
+    let datosAlmacenados = localStorage.getItem("datosPerfil");
+    if (datosAlmacenados) {
+      let datosPerfil = JSON.parse(datosAlmacenados);
   
-    if (storedPerfilData) {
-      let perfilData = JSON.parse(storedPerfilData);
-  
-      document.getElementById("nombre").value = perfilData.nombre;
-      document.getElementById("apellido").value = perfilData.apellido;
-      document.getElementById("telefono").value = perfilData.telefono;
-      document.getElementById("segnombre").value = perfilData.segnombre;
-      document.getElementById("segapellido").value = perfilData.segapellido;
-      // Cargar otros campos si es necesario
+      document.getElementById("nombre").value = datosPerfil.nombre;
+      document.getElementById("apellido").value = datosPerfil.apellido;
+      document.getElementById("telefono").value = datosPerfil.telefono;
+      document.getElementById("segnombre").value = datosPerfil.segnombre;
+      document.getElementById("segapellido").value = datosPerfil.segapellido;
     }
   });
 
