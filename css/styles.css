@@ -10,7 +10,12 @@
 .jumbotron .display-4 {
   font-weight: bold;
 }
-
+#imagenPerfil {
+  position: absolute;
+  top: 70px;
+  right: 150px;
+  height: 130px; /* Tamaño deseado en píxeles */
+}
 
 
 nav a {
