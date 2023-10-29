@@ -1,6 +1,6 @@
 
  //INICIO ENTREGA 7 PARTE 1
-function isLoggedIn() {
+ function isLoggedIn() {
     let dato = localStorage.getItem("email");
     if (dato){
         return true;
@@ -41,79 +41,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //INICIO ENTREGA 7 PARTE 2
+document.getElementById("btnGuardarCambios").addEventListener("click", function () {
+    let camposObligatorios = document.querySelectorAll('[required]');
+    let todosCamposCompletos = true;
 
-//espera a que cargue la pág.
-document.addEventListener("DOMContentLoaded", function () {
-
-    // obtiene elemento de entrada del form por el id y lo almacena
-    const campoPrimerNombre = document.getElementById("primerNombre");
-    const campoSegundoNombre = document.getElementById("segundonombre");
-    const campoPrimerApellido= docuement.getElementById("primerapellido");
-    const campoSegundoApellido = document.getElementById("segundoApellido");
-    const campoInputEmail = document.getElementById("inputEmail");
-    const campoInputTelf = document.getElementById("inputTelf");
-
-    // idem anterior: obtiene boton guardar cambios
-    const botonGuardarCambios = document.getElementById("guardarCambios");
-
-    // agrega evento al boton xa q se ejecute la función al dar click
-    botonGuardarCambios.addEventListener("click", function () {
-
-    // obtiene datos ingresados en campos por usuario y los almacena
-    const primerNombre = campoPrimerNombre.value;
-    const segundoNombre = campoSegundoNombre.value;
-    const primerApellido = campoPrimerApellido.value;
-    const segundoApellido = campoSegundoApellido.value;
-    const email = campoInputEmail.value; 
-    const telefono = campoInputTelf.value;
-
-    // valida campos obligatorios
-    if (!primerNombre || !primerApellido || !email) {
-        alert("Completar campos obligatorios*");
-        return;
-    }
-
-    // guardar datos en el localstorage
-    const datos= {
-        primerNombre,
-        segundoNombre,
-        primerApellido,
-        segundoApellido,
-        email,
-        telefono,
-        
-    };
-
-    //antes de almacernar, los convertimos a cadena JSON
-    localStorage.setItem("datosUsuario", JSON.stringify(datos));
-
-    alert("Datos guardados");
-
-
-
+    //RECORRE LOS CAMPOS OBLIGATORIOS Y SI ESTÁN VACÍOS LE PONEN LA CLASE INVÁLIDA, SINO, NO
+  
+    camposObligatorios.forEach(function (campo) {
+      if (campo.value.trim() === "") {
+        campo.classList.add("is-invalid");
+        todosCamposCompletos = false;
+      } else {
+        campo.classList.remove("is-invalid");
+      }
     });
+  
 
+    //SI ESTÁN AL MENOS LOS OBLIGATORIOS SE GUARDA EN UN OBJETO Y SE CARGA EN UN LOCALSTORAGE
+    if (todosCamposCompletos) {
+      let datosPerfil = {
+        nombre: document.getElementById("nombre").value,
+        apellido: document.getElementById("apellido").value,
+        telefono: document.getElementById("telefono").value,
+        segnombre: document.getElementById("segnombre").value,
+        segapellido: document.getElementById("segapellido").value,
+      };
+      localStorage.setItem("datosPerfil", JSON.stringify(datosPerfil));
+  
+      //   ALERTA EXITO BOOTSTRAP
+      let successMessage = document.getElementById("success-message");
+      successMessage.classList.remove("d-none");
+      successMessage.classList.add("show");
+    }
+  });
 //FIN ENTREGA 7 PARTE 2
+
+
+
+
 
 
 //INICIO ENTREGA 7 PARTE 3
 
-// si hay datos guardados, los muestra
-const datosGuardados = localStorage.getItem("datosUsuario");
-if (datosGuardados) {
-    const datos = JSON.parse (datosGuardados); //si hay datos, se parsean desde JSON a JS
-    campoPrimerNombre.value = datos.primerNombre;
-    campoSegundoNombre.value = datos.segundoNombre;
-    campoPrimerApellido.value = datos.primerApellido;
-    campoSegundoApellido.value = datos.segundoApellido;
-    campoInputEmail.value = datos.inputEmail;
-    campoInputTelf.value = datos.inputTelf;
-}
-
-
-});
-
-
+//AL CARGAR LA PÁGINA, SI TIENE PERFIL GUARDADO,  SE CARGAN LOS VALORES DEL LOCALSTORAGE A LOS INPUTS
+document.addEventListener("DOMContentLoaded", function () {
+    let datosAlmacenados = localStorage.getItem("datosPerfil");
+    if (datosAlmacenados) {
+      let datosPerfil = JSON.parse(datosAlmacenados);
+  
+      document.getElementById("nombre").value = datosPerfil.nombre;
+      document.getElementById("apellido").value = datosPerfil.apellido;
+      document.getElementById("telefono").value = datosPerfil.telefono;
+      document.getElementById("segnombre").value = datosPerfil.segnombre;
+      document.getElementById("segapellido").value = datosPerfil.segapellido;
+    }
+  });
 
 //FIN ENTREGA 7 PARTE 3
 
