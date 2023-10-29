@@ -67,58 +67,72 @@
     </div>
 
   </nav>
+   
   <main>
+    
+   
     <div class="container">
-
+      <img id="imagenPerfil" src="imagen-por-defecto.png" alt="Imagen de perfil">
       <div class="mt-4">
         <h3>Perfil</h3>
       </div>
-
-      <hr class="mt-5">
+      
+      <br>
+      <br>
+      <hr class="mt-4">
       <form class>
         <div class="row">
           <div class="col">
             <label for="" class="text-secondary form-label mb-0">Primer nombre*</label>
-            <input type="text" class="form-control" id="primerNombre" placeholder="ej: Gabriela" required>
+            <input type="text" class="form-control" id="nombre" placeholder="ej: Gabriela" required>
+            <div class="invalid-feedback">
+              Por favor, ingrese su nombre.
+            </div>
           </div>
           <div class="col">
             <label for="" class="text-secondary form-label mb-0">Segundo nombre</label>
-            <input type="text" class="form-control" id="segundoNombre" placeholder="ej: Fernanda">
+            <input type="text" class="form-control" id="segnombre" placeholder="ej: Fernanda">
           </div>
         </div>
         <div class="row mt-3">
           <div class="col">
             <label for="" class="text-secondary form-label mb-0">Primer apellido*</label>
-            <input type="text" class="form-control" id="primerApellido" placeholder="ej: Diaz" required>
+            <input type="text" class="form-control" id="apellido" placeholder="ej: Diaz" required>
+            <div class="invalid-feedback">
+              Por favor, ingrese su nombre.
+            </div>
           </div>
           <div class="col">
             <label for="" class="text-secondary form-label mb-0">Segundo apellido</label>
-            <input type="text" class="form-control" id="segundoApellido" placeholder="ej: Fagundez">
+            <input type="text" class="form-control" id="segapellido" placeholder="ej: Fagundez">
           </div>
         </div>
         <div class="row mt-3">
           <div class="col">
-            <label for="" class="text-secondary form-label mb-0">E-mail*</label>
-            <input type="text" class="form-control" id="inputEmail" placeholder="ejemplo@mail.com" required>
+            <label for="" class="text-secondary form-label mb-0">E-mail</label>
+            <input type="text" class="form-control" id="inputEmail" placeholder="ejemplo@mail.com">
           </div>
           <div class="col">
             <label for="" class="text-secondary form-label mb-0">Imágen de perfil</label>
-            <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"
-              aria-label="Upload">
+            <input type="file" class="form-control" id="inputImagen" accept="image" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
           </div>
         </div>
         <div class="row mt-3">
           <div class="col">
-            <label for="" class="text-secondary form-label">Teléfono de contacto</label>
-            <input type="text" class="form-control" id="inputTelf" placeholder="090000000">
+            <label for="" class="text-secondary form-label">Teléfono de contacto*</label>
+            <input type="text" class="form-control" id="telefono" placeholder="090000000" required>
           </div>
           <div class="col">
             <label for="" class="text-secondary form-label"> </label>
           </div>
         </div>
         <hr class="mt-5">
-        <button type="button" class="btn btn-primary" id="guardarCambios">Guardar cambios</button>
+        <button type="button" id="btnGuardarCambios" class="btn btn-primary">Guardar cambios</button>
       </form>
+      <div id="success-message" class="alert alert-success alert-dismissible fade show d-none" role="alert">
+        <strong>¡Éxito!</strong> Los datos se han guardado con éxito.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
     </div>
   </main>
 
