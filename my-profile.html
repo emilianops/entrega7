@@ -63,7 +63,9 @@
   </nav>
   <main>
     <div class="container">
-      <img id="imagenPerfil" src="imagen-por-defecto.png" alt="Imagen de perfil">
+      <div id="imgPerfil">
+        <img class="img-fluid img-thumbnail" id="imagenPerfil" src="img/img_perfil.png" alt="Imagen de perfil">
+      </div>
       <div class="mt-4">
         <h3>Perfil</h3>
       </div>
@@ -71,11 +73,11 @@
       <br>
       <br>
       <hr class="mt-4">
-      <form class>
+      <form >
         <div class="row">
           <div class="col">
             <label for="" class="text-secondary form-label mb-0">Primer nombre*</label>
-            <input type="text" class="form-control" id="nombre" placeholder="ej: Gabriela" required>
+            <input type="text" class="form-control mt-0" id="nombre" placeholder="ej: Gabriela" required>
             <div class="invalid-feedback">
               Por favor, ingrese su nombre.
             </div>
