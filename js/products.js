@@ -1,10 +1,7 @@
 let API_URL = `https://japceibal.github.io/emercado-api/cats_products/${localStorage.getItem(
   "catID"
 )}.json`;
-let API_URL_JUGUETES =
-  "https://japceibal.github.io/emercado-api/cats_products/102.json";
 let cardsContainer = document.getElementById("container-cards");
-
   //------PUNTO 1 ENTREGA 3-----
   function setProdID(id) {
     localStorage.setItem("prodID", id);
@@ -12,7 +9,7 @@ let cardsContainer = document.getElementById("container-cards");
   }
   //---------------------------
 
-async function fetchProducts() {
+async function fetchProducts() { //Traemos productos con Fetch
   try {
     let response = await fetch(API_URL);
     let data = await response.json();
@@ -22,9 +19,8 @@ async function fetchProducts() {
   }
 }
 
-async function displayProducts() {
+async function displayProducts() { //Mostramos productos traidos con Fetch
   let products = await fetchProducts();
-
   products.forEach((product) => printProducto(product, cardsContainer) );
 }
 // Llamo a la func para mostrar los productos cuando la página cargue
@@ -46,7 +42,7 @@ document.getElementById("flecha_Relevancia").addEventListener("click", function 
 
 /**
  * Imprime un producto en el contenedor especificado
- */
+ **/
 function printProducto(product, container) {
     let card = document.createElement("div");
     card.classList.add("div-cards", "row", "container");
@@ -185,13 +181,7 @@ if (currentTheme === 'dark') {
 btnTema.addEventListener('click', toggleTheme);
 
 
-
+//Mostrar email como boton en Nav
 let email = localStorage.getItem("email"); // <- email = "emilianopintos18@gmail.com"
-
-
-
-
 let li_nav = document.getElementById("usuario");
-
-
 li_nav.innerHTML = `<span class="nav-link">${email}</span>`;

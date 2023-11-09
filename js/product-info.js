@@ -3,32 +3,29 @@ let api_info = `https://japceibal.github.io/emercado-api/products/${localStorage
 let api_comments = `https://japceibal.github.io/emercado-api/products_comments/${localStorage.getItem("prodID") + EXT_TYPE
     }`;
 
-console.log(api_info);
-console.log(api_comments);
-
-async function fetchProducts() {
+async function fetchProducts() { //Mostramos los productos traidos con Fetch
     try {
-        let response = await fetch(api_info);
+        let response = await fetch(api_info); 
         let data = await response.json();
-        return data;
+        return data; //Si todo sale bien, muestra los datos.
     } catch (error) {
-        console.error("Error fetching data:", error);
-        throw error; // Re-throw the error so it can be handled outside this function
+        console.error("Error fetching data:", error); //Si da error, muestra mensaje de error.
+        throw error; 
     }
 }
 
-async function fetchComments() {
+async function fetchComments() { //Muestra los comentarios traidos con Fetch
     try {
         let response = await fetch(api_comments);
-        let data = await response.json();
+        let data = await response.json(); 
         return data;
     } catch (error) {
         console.error("Error fetching data:", error);
-        throw error; // Re-throw the error so it can be handled outside this function
+        throw error; 
     }
 }
 
-function crearRatingEstrellas(puntaje) {
+function crearRatingEstrellas(puntaje) { //Crea un rango de estrellas para valorar al Usuario.
     const maxEstrellas = 5;
     const ratingEstrellas = document.createElement("div");
 
@@ -73,13 +70,10 @@ async function nuevoDisplay() {
 
 
     <div id="btnComprar"> <input type="button"  value="Comprar" id="btnAgregarCarrito" class="btn btn-primary btn-lg"></div>
-
-
     <div id="nombre"> <h1>${products.name}</h1>
     </div>
-    
-    <hr>
 
+    <hr>
     <ul class="estilo-lista">
         <li>
             <strong>Precio</strong>
@@ -238,21 +232,13 @@ async function mostrarProductosrelacionados() {
 
     })
 
-
-
 }
 
 // Llamar a la función para mostrar productos cuando la página cargue
 window.onload = mostrarProductosrelacionados;
 
 
-
-
-
-
 // entrega 5 carrito
-
-
 
 // Obtener productos del carrito almacenados en localStorage
 let productosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -315,13 +301,7 @@ if (currentTheme === 'dark') {
 btnTema.addEventListener('click', toggleTheme);
 
 
-
+//Mostrar email como boton en Nav
 let email = localStorage.getItem("email"); // <- email = "emilianopintos18@gmail.com"
-
-
-
-
 let li_nav = document.getElementById("usuario");
-
-
 li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
