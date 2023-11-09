@@ -1,4 +1,4 @@
-    let apiCarrito = "https://japceibal.github.io/emercado-api/user_cart/25801.json";
+    let apiCarrito = "https://japceibal.github.io/emercado-api/user_cart/25801.json"; //Traemos la API
     let total = 0;
 
     let productosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -38,7 +38,7 @@
         let contenedor = document.querySelector("main .container");
 
         contenedor.innerHTML += `
-            <h2 class="container text-center">Carrito de Compras</h2>
+            <h2 class="container">Carrito de Compras</h2>
             <br>
             <h3>Artículos a comprar</h3>
             <br>
@@ -52,7 +52,7 @@
                     <th>Acciones</th>
                 </tr>
                 <br>
-                <tr>
+                <tr> 
                     <td><img class="imagen-carrito" src="${element.articles[0].image}"/></td>
                     <td>${element.articles[0].name}</td>
                     <td>${element.articles[0].currency} ${element.articles[0].unitCost}</td>
@@ -60,7 +60,7 @@
                     <td id="total" class="negrita">${element.articles[0].currency} ${element.articles[0].unitCost}</td> 
                 </tr>
             </table>
-        `;
+        `//AQUI MOSTRAMOS EL PRODUCTO REQUERIDO POR LA TAREA, EL  QUE SE SOLLICITO POR DEFECTO;
 
         let cont_tabla = document.getElementById("tabla-carrito");
 
@@ -76,9 +76,9 @@
                     </td>
                     <td id="subTotal" class="negrita">${producto.moneda} <span class="costoProducto">${producto.cantidad * producto.costo}</span></td>
                     <td><button class="btn-quitar-producto quitarProducto " data-nombre="${producto.nombre}"> Eliminar</button></td>
-                `;
+                `//AQUI MOSTRAMOS TODOS LOSPRODUCTOS  TRAIDOS DE LA API;
 
-                cont_tabla.appendChild(fila_tabla);
+                cont_tabla.appendChild(fila_tabla);//AGREGAMOS LOS PRODUCTOS A LA TABLA
 
                 localStorage.removeItem('nombreCarrito');
                 localStorage.setItem('costoCarrito', producto.costo);
@@ -87,7 +87,7 @@
             let cantidadInputNuevo = document.querySelectorAll(".cantidadInputNuevo");
             let costoProducto = document.querySelectorAll(".costoProducto");
 
-            cantidadInputNuevo.forEach((input, index) => {
+            cantidadInputNuevo.forEach((input, index) => { //Proceso para que recorra todos los input de CANTIDAD y aumente/disminuya su precio por cada uno en tiempo real
                 input.addEventListener("input", () => {
                     let cantidadInputID = input.getAttribute("id");
                     let productoNombre = cantidadInputID.split("_")[1];
@@ -103,15 +103,15 @@
                     }
                 });
             });
-            actualizarPrecios()
+            actualizarPrecios()//ESTA FUNCION AL FINAL HACE QUE SE ACTUALICEN EN TIEMPO REAL
         });
 
         let cantidadInput = document.getElementById("cantidadInput");
         let totalTd = document.getElementById("total");
 
-        cantidadInput.addEventListener("input", calcularTotal);
+        cantidadInput.addEventListener("input", calcularTotal);//Eventio de actualizacion que muestra total en tiempo real mientras cambiamos INPUTS disminuyendo o aumentando cantidades
 
-        async function calcularTotal() {
+        async function calcularTotal() { //Funcion que calcula el Total de todos los productos
             let element = await carritoFetch();
             let cantidad = cantidadInput.value;
             let precioUnitario = element.articles[0].unitCost;
@@ -262,15 +262,15 @@
         subtotaldeTodos.addEventListener("DOMSubtreeModified", calcularYmostrarTotal);
 
         function calcularYmostrarTotal() {
-            let subtotalEnvio = parseFloat(subtotaldeEnvio.textContent.replace("USD ", ""));
-            let subtotalTodos = parseFloat(subtotaldeTodos.textContent.replace("USD ", ""));
+            let subtotalEnvio = parseFloat(subtotaldeEnvio.textContent.replace("USD ", ""));//Parsea el resultado para que puedan mostrarse
+            let subtotalTodos = parseFloat(subtotaldeTodos.textContent.replace("USD ", ""));//Parsea el resultado para que puedan mostrarse
 
             let total = subtotalTodos + subtotalEnvio;
-            totaldeTodo.textContent = "USD " + total.toFixed(2);
+            totaldeTodo.textContent = "USD " + total.toFixed(2);//Se muestran en pantalla con decimales
         }
     });
 
-    function actualizarPrecios() {
+    function actualizarPrecios() {//Funcion para actualizar los Precios, se usa en todas las funciones que requieran un cambio DE PRECIO en tiempo real en sus modificaciones de cantidad
         let subtotaldeTodos = document.querySelector(".subtotaldeTodos");
         let subtotaldeEnvio = document.querySelector(".subtotaldeEnvio");
         let totaldeTodo = document.querySelector(".totaldeTodo");
@@ -287,6 +287,7 @@
         let standardRadio = document.getElementById("standard");
         let porcentajeSubtotal = 0;
         
+        //MODIFICA EL PRECIO SEGUN LA OPCIÓN SELECCIONADA, CADA UNA DARÁ UN PORCENTAJE DISTINTO EN BASE AL SUBTOTAL
         if (premiumRadio.checked) {
             porcentajeSubtotal = 0.15; // 15%
         } else if (expressRadio.checked) {
@@ -313,17 +314,17 @@
     let camposTarjeta = document.querySelectorAll(".campos-tarjeta");
     let camposTransferencia = document.querySelectorAll(".campos-transferencia");
 
-    checkTarjeta.addEventListener("change", function () {
+    checkTarjeta.addEventListener("change", function () { //EVENTO DE CAMBIO QUE AL CLICKEAR CHECK TARJETA HABILITA LOS CAMPOS DE TARJETA DE CREDITO
         habilitarCampos(camposTarjeta, checkTarjeta.checked);
         habilitarCampos(camposTransferencia, !checkTarjeta.checked);
     });
 
-    checkTransferencia.addEventListener("change", function () {
+    checkTransferencia.addEventListener("change", function () {//EVENTO DE CAMBIO QUE AL CLICKEAR EN CHECK TRANSFERENCIA HABILITA LOS CAMPOS DE TRANSFERENCIA BANCARIA
         habilitarCampos(camposTransferencia, checkTransferencia.checked);
         habilitarCampos(camposTarjeta, !checkTransferencia.checked);
     });
 
-    function habilitarCampos(campos, habilitar) {
+    function habilitarCampos(campos, habilitar) {//FUNCIÓN QUE HABILITA LOS CAMPOS SEGÚN LA OPCIÓN SELECCIONADA, O MEJOR DICHO, SE DESHABILITAN LOS OPUESTOS AL QUE ELEJIMOS.
         campos.forEach(campo => {
             campo.disabled = !habilitar;
         });
@@ -348,7 +349,7 @@
         btnFinalizarCompra.addEventListener("click", validarCompra);
     });
 
-    function validarCompra() {
+    function validarCompra() {//FUNCIÓN PARA VALIDAR COMPRA
         let valid = true;
 
 
@@ -360,6 +361,8 @@
         const errorNumero = document.getElementById("errorNumero");
         const errorEsquina = document.getElementById("errorEsquina");
 
+
+        //SE CORRE UN PROCESO DE IF QUE VERIFIQUE QUE LOS CAMPOS NO ESTÉN VACÍOS, Y SI LO ESTÁN SE ENVÍA MENSAJE DE ERROR.
         if (!calle.value.trim()) {
             errorCalle.textContent = "La calle no puede estar vacía.";
             errorCalle.style.color = "red";
@@ -399,6 +402,7 @@
         const tipoEnvioStandard = document.getElementById("standard");
         const errorEnvio = document.getElementById("errorEnvio");
 
+        //CON UN IF SE VERIFICA QUE AL MENOS UN INPUT ESTÁ SELECCIONADO, SINO MUESTRA MENSAJE DE ERROR
         if (!(tipoEnvioPremium.checked || tipoEnvioExpress.checked || tipoEnvioStandard.checked)) {
             errorEnvio.textContent = "Debe seleccionar un tipo de envío.";
             errorEnvio.style.color = "red";
@@ -410,9 +414,10 @@
 
         const cantidadInputNuevo = document.querySelectorAll(".cantidadInputNuevo");
         const errorCantidad = document.getElementById("errorCantidad");
+        let cantidadValida = true;//Se inicia la variable con booleano para poder utilizarla a gusto en el IF
 
-        let cantidadValida = true;
 
+//IF PARA VERIFICAR SI LA CANTIDAD DE PRODUCTOS ES IGUAL O MENOR A 0, SE ENVÍA MENSAJE DE ERROR, AL MENOS DEBE HABER 1 PRODUCTO.
         cantidadInputNuevo.forEach(input => {
             const cantidad = parseFloat(input.value);
             if (isNaN(cantidad) || cantidad <= 0) {
@@ -442,6 +447,9 @@
     const fechaVencimiento = document.getElementById("fechaVencimiento");
     const numCuentaTransferencia = document.getElementById("nrodeCuenta");
     const errorFormaPago = document.getElementById("errorFormaPago");
+
+/*SE EJECUTA UN IF QUE VERIFICA LA FORMA DE PAGO, UNA VEZ SELECCIONADA PEDIRÁ LLENAR LOS INPUTS CORRESPONDIENTES Y
+ SOLO DEJARÁ CONTINUAR SI CUMPLEN CON UNA FORMA DE PAGO Y LOS INPUTS LLENOS*/
 
     if (!tipoPagoCredito.checked && !tipoPagoTransferencia.checked) {
         errorFormaPago.textContent = "Debe seleccionar una forma de pago.";
@@ -476,6 +484,8 @@
 
 
     //ENTREGA 6 DESAFIATE 
+
+    //EVENTO DE CLICK QUE ELIMINA EL PRODUCTO DEL CARRITO AL CLICKEAR EN ÉL
     document.addEventListener("click", function (event) {
         if (event.target.classList.contains("quitarProducto")) {
 
@@ -489,7 +499,7 @@
         }
     });
 
-    document.addEventListener("DOMContentLoaded", actualizarPrecios);
+    document.addEventListener("DOMContentLoaded", actualizarPrecios);//SE ACTUALIZAN LOS PRECIOS AL ELIMINAR EL PRODUCTO.
     document.addEventListener("click", function (event) {
         if (event.target.classList.contains("quitarProducto")) {
             actualizarPrecios();

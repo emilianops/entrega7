@@ -24,7 +24,7 @@ function isLoggedIn() {
     }
 }
 
-// entrea 4, parte 2: función para cerrar sesión
+// entrega 4, parte 2: función para cerrar sesión
 function cerrarSesion() {
     localStorage.removeItem("email");
     window.location.href = 'login.html'; //redirige al inicio
@@ -71,14 +71,8 @@ btnTema.addEventListener('click', toggleTheme);
 
 
 
+//Mostrar email como boton en Nav
 let email = localStorage.getItem("email"); // <- email = "emilianopintos18@gmail.com"
-
-
-
-
 let li_nav = document.getElementById("usuario");
-
-
 li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
-
 

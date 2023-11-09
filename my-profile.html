@@ -7,21 +7,6 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
@@ -69,7 +54,6 @@
       <div class="mt-4">
         <h3>Perfil</h3>
       </div>
-      
       <br>
       <br>
       <hr class="mt-4">
@@ -78,7 +62,7 @@
           <div class="col">
             <label for="" class="text-secondary form-label mb-0">Primer nombre*</label>
             <input type="text" class="form-control mt-0" id="nombre" placeholder="ej: Gabriela" required>
-            <div class="invalid-feedback">
+            <div class="invalid-feedback"> <!--Mensaje de error -->
               Por favor, ingrese su nombre.
             </div>
           </div>
@@ -91,8 +75,8 @@
           <div class="col">
             <label for="" class="text-secondary form-label mb-0">Primer apellido*</label>
             <input type="text" class="form-control" id="apellido" placeholder="ej: Diaz" required>
-            <div class="invalid-feedback">
-              Por favor, ingrese su nombre.
+            <div class="invalid-feedback"> <!--Mensaje de error -->
+              Por favor, ingrese su apellido.
             </div>
           </div>
           <div class="col">
@@ -104,12 +88,12 @@
           <div class="col">
             <label for="" class="text-secondary form-label mb-0">E-mail</label>
             <input type="text" class="form-control" id="inputEmail" placeholder="ejemplo@mail.com" required>
-            <div class="invalid-feedback">
+            <div class="invalid-feedback"> <!--Mensaje de error -->
               Por favor, ingrese un e-mail válido.
             </div>
           </div>
           <div class="col">
-            <label for="" class="text-secondary form-label mb-0">Imágen de perfil</label>
+            <label for="" class="text-secondary form-label mb-0">Imágen de perfil</label> <!--Imagen de perfil -->
             <input type="file" class="form-control" id="inputImagen" accept="image" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
           </div>
         </div>
@@ -123,10 +107,10 @@
           </div>
         </div>
         <hr class="mt-5">
-        <button type="button" id="btnGuardarCambios" class="btn btn-primary">Guardar cambios</button>
+        <button type="button" id="btnGuardarCambios" class="btn btn-primary">Guardar cambios</button> <!--Boton guardar cambios -->
       </form>
       <div id="success-message" class="alert alert-success alert-dismissible fade show d-none" role="alert">
-        <strong>¡Éxito!</strong> Los datos se han guardado con éxito.
+        <strong>¡Éxito!</strong> Los datos se han guardado con éxito. <!--Mensaje de exito-->
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     </div>

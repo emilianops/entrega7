@@ -66,7 +66,6 @@ function showCategoriesList(){
             </div>
             `
         }
-
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }
@@ -92,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok"){
             currentCategoriesArray = resultObj.data
             showCategoriesList()
-            //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
 
@@ -170,12 +168,7 @@ btnTema.addEventListener('click', toggleTheme);
 
 
 
+//Mostrar email como boton en Nav
 let email = localStorage.getItem("email"); // <- email = "emilianopintos18@gmail.com"
-
-
-
-
 let li_nav = document.getElementById("usuario");
-
-
 li_nav.innerHTML = `<span class="nav-link">${email}</span>`;

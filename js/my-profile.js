@@ -1,4 +1,6 @@
-let IMAGEN = "";
+let IMAGEN = ""; //Variable global para utilizarla en distintos lugares
+
+
 //INICIO ENTREGA 7 PARTE 1
 function isLoggedIn() {
   let dato = localStorage.getItem("email");
@@ -28,13 +30,11 @@ window.addEventListener('load', function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-
   let input = document.getElementById("inputEmail");
   if (email) {
     input.value = email;
   }
 });
-
 //FIN ENTREGA 7 PARTE 1
 
 
@@ -48,7 +48,6 @@ document.getElementById("btnGuardarCambios").addEventListener("click", function 
   localStorage.setItem("imgPerfil",IMAGEN);
   
   //RECORRE LOS CAMPOS OBLIGATORIOS Y SI ESTÁN VACÍOS LE PONEN LA CLASE INVÁLIDA, SINO, NO
-  
   camposObligatorios.forEach(function (campo) {
     if (campo.value.trim() === "") {
       campo.classList.add("is-invalid");
@@ -84,7 +83,6 @@ document.getElementById("btnGuardarCambios").addEventListener("click", function 
 
 
 //INICIO ENTREGA 7 PARTE 3
-
 //AL CARGAR LA PÁGINA, SI TIENE PERFIL GUARDADO,  SE CARGAN LOS VALORES DEL LOCALSTORAGE A LOS INPUTS
 document.addEventListener("DOMContentLoaded", function () {
   let datosAlmacenados = localStorage.getItem("datosPerfil");
@@ -98,7 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("segapellido").value = datosPerfil.segapellido;
   }
 });
-
 //FIN ENTREGA 7 PARTE 3
 
 
@@ -106,8 +103,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //INICIO ENTREGA 7 DESAFIATE
+let inputImagen = document.getElementById("inputImagen");
 
+inputImagen.addEventListener("change", function () {
+  let foto = document.getElementById("inputImagen").files[0];
+  if (inputImagen.files && inputImagen.files[0]) {
+    let reader = new FileReader();
+    reader.addEventListener('load', (event) => {
+      document.getElementById("imagenPerfil").src = event.target.result;
 
+      IMAGEN = event.target.result;
+    });
+    reader.readAsDataURL(inputImagen.files[0]);
+  } else {
+    document.getElementById("imagenPerfil").src = "img/img_perfil.png"
+    localStorage.removeItem("imgPerfil");
+  }
+}
+);
+
+document.addEventListener("DOMContentLoaded", function () {
+  let imagenGuardada = localStorage.getItem("imgPerfil");
+  let foto = document.getElementById("imagenPerfil");
+  if (imagenGuardada) {
+    foto.src = imagenGuardada;
+  } else {
+    foto.src = "img/img_perfil.png";
+  }
+});
 //FIN ENTREGA 7 DESAFIATE
 
 
@@ -115,7 +138,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //OTRAS FUNCIONES NECESARIAS
-
 const btnTema = document.getElementById('btnTema');
 const body = document.body;
 // Función para cambiar el tema
@@ -138,47 +160,12 @@ if (currentTheme === 'dark') {
 
 // Agregar un listener al botón para cambiar el tema cuando se hace clic
 btnTema.addEventListener('click', toggleTheme);
+
+
+//Mostrar email como boton en Nav
 let email = localStorage.getItem("email"); // <- email = "emilianopintos18@gmail.com"
 let li_nav = document.getElementById("usuario");
-li_nav.innerHTML = `<span class="nav-link">${email}</span>`
+li_nav.innerHTML = `<span class="nav-link">${email}</span>`;
 
 
-let inputImagen = document.getElementById("inputImagen");
-
-
-inputImagen.addEventListener("change", function () {
-
-  let foto = document.getElementById("inputImagen").files[0];
-
-
-  if (inputImagen.files && inputImagen.files[0]) {
-    let reader = new FileReader();
-    reader.addEventListener('load', (event) => {
-      document.getElementById("imagenPerfil").src = event.target.result;
-
-      IMAGEN = event.target.result;
-    });
-    reader.readAsDataURL(inputImagen.files[0]);
-  } else {
-    document.getElementById("imagenPerfil").src = "img/img_perfil.png"
-    localStorage.removeItem("imgPerfil");
-  }
-
-}
-);
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  let imagenGuardada = localStorage.getItem("imgPerfil");
-
-  let foto = document.getElementById("imagenPerfil");
-
-  if (imagenGuardada) {
-    foto.src = imagenGuardada;
-  } else {
-    foto.src = "img/img_perfil.png";
-  }
-
-
-});
 
