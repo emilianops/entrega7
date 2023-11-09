@@ -44,22 +44,24 @@ document.getElementById("flecha_Relevancia").addEventListener("click", function 
  * Imprime un producto en el contenedor especificado
  **/
 function printProducto(product, container) {
-    let card = document.createElement("div");
-    card.classList.add("div-cards", "row", "container");
-    card.innerHTML = `
-              <img class="col-sm-12 col-md-12 img-fluid" src="${product.image}" alt="${product.name}">
-              <div class="col-sm-12 col-md-12">
-                  <h2>${product.name} - ${product.currency} ${product.cost}</h2>
-                  <p>${product.description}</p>
-              </div>
-              <span class="price col-sm-12 col-md-12">${product.soldCount} vendidos</span>
-          `;
-    container.appendChild(card);
+  let card = document.createElement("div");
+  card.classList.add("div-cards", "row", "container");
+  card.innerHTML = `
+            <div class="col-sm-12 col-md-3">
+                <img class="img-fluid" src="${product.image}" alt="${product.name}">
+            </div>
+            <div class="col-sm-12 col-md-9">
+                <h2>${product.name} - ${product.currency} ${product.cost}</h2>
+                <p>${product.description}</p>
+                <span class="price">${product.soldCount} vendidos</span>
+            </div>
+        `;
+  container.appendChild(card);
 
-    card.addEventListener("click", function (e) {
-      e.preventDefault();
-      setProdID(product.id);
-    });
+  card.addEventListener("click", function (e) {
+    e.preventDefault();
+    setProdID(product.id);
+  });
 }
 
 async function ordenarProductos(x) {
