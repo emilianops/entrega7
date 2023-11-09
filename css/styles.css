@@ -437,14 +437,6 @@ body.dark-theme div {
 }
 
 
-
-h2 {
-  text-align:start;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-padding: 20px;
-  position: relative;
-}
-
 .producto {
   border-radius: 10px;
   border: 4px solid bisque;
