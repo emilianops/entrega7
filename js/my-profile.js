@@ -104,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
 //INICIO ENTREGA 7 DESAFIATE
 let inputImagen = document.getElementById("inputImagen");
 
@@ -158,7 +157,7 @@ const currentTheme = localStorage.getItem('theme');
 if (currentTheme === 'dark') {
   body.classList.add('dark-theme');
 } else {
-  body.classList.add('light-theme')
+  body.classList.add('light-theme');
 }
 
 // Agregar un listener al botón para cambiar el tema cuando se hace clic
