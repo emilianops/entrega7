@@ -645,3 +645,17 @@ background: linear-gradient(#fbf9f7, rgb(105, 105, 105));
 
 
 .quitarProducto:hover {background: #da190b; color: white;}
+
+
+
+/*input de telefono del perfil sin flechas */
+
+#telefono::-webkit-inner-spin-button,
+#telefono::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#telefono{
+  -moz-appearance: textfield;
+}
