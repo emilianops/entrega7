@@ -437,15 +437,6 @@ body.dark-theme div {
 }
 
 
-
-h2 {
-  text-align:start;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-padding: 20px;
-  
-  position: relative;
-}
-
 .producto {
   border-radius: 10px;
   border: 4px solid bisque;
@@ -453,7 +444,7 @@ padding: 20px;
   margin: 15px;
   text-align: center;
   display: inline-block;
-  /* Mostrar productos en línea */
+  /* Mostrar productos en línea recta*/
   width: 200px;
   /* Ancho fijo para cada producto */
   vertical-align: top;
