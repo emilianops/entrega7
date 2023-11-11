@@ -75,6 +75,9 @@ document.getElementById("btnGuardarCambios").addEventListener("click", function 
     successMessage.classList.add("show");
   }
 });
+
+
+
 //FIN ENTREGA 7 PARTE 2
 
 
@@ -97,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 //FIN ENTREGA 7 PARTE 3
-
 
 
 
@@ -155,7 +157,7 @@ const currentTheme = localStorage.getItem('theme');
 if (currentTheme === 'dark') {
   body.classList.add('dark-theme');
 } else {
-  body.classList.add('light-theme')
+  body.classList.add('light-theme');
 }
 
 // Agregar un listener al botón para cambiar el tema cuando se hace clic
